@@ -12,7 +12,7 @@ from fb_connection import FbConnection
 from fb_group import FbGroup
 
 
-EMAIL = "faycal1998@gmail.com"
+EMAIL = None
 PASSWORD = None  # put your password here if you doesn't want to enter your password at each time.
 CSV_FILE = None
 
@@ -37,6 +37,8 @@ def send_friends(client, message):
 
 
 if __name__ == '__main__':
+    if EMAIL is None:
+        EMAIL = input("Entrez votre adresse email : ")
     if PASSWORD is None:
         PASSWORD = getpass()
     fbc = FbConnection(EMAIL, PASSWORD)
