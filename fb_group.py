@@ -21,7 +21,8 @@ class FbGroup:
                 if line_count != 0:
                     user_id = row[1]
                     r = re.match(r'/ajax/hovercard/user.php\?id=(?P<user_id>\d+).*', user_id)
-                    self.ids.append(int(r.group('user_id')))
+                    if r:
+                        self.ids.append(int(r.group('user_id')))
                 line_count += 1
         return self.ids
 
@@ -38,4 +39,4 @@ class FbGroup:
         :return:
         """
         f = FFile(location)
-        f.write_file(self.get_friends_ids__string())
+        f.write_file(self.get_ids__string())
