@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*
 
 # std
+import os
 import sys
 
 # 3d
@@ -14,9 +15,9 @@ from fb_connection import FbConnection
 from fb_group import FbGroup
 
 
-EMAIL = None
-PASSWORD = None  # put your password here if you doesn't want to enter your password at each time.
-CSV_FILE = None
+EMAIL = os.environ.get('EMAIL')
+PASSWORD = os.environ.get('PASSWORD')
+CSV_FILE = os.environ.get('CSV_FILE')
 
 
 def send_group(client, message):
