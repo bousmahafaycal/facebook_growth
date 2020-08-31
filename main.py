@@ -44,9 +44,14 @@ if __name__ == '__main__':
     if PASSWORD is None:
         PASSWORD = getpass()
     fbc = FbConnection(EMAIL, PASSWORD)
-
-    message = input("Quel message souhaitez-vous envoyé : ")
-
+    print("Quel message souhaitez-vous envoyé (Entrez / collez votre message. Entrez #fin sur la dernière ligne pour terminer):")
+    messages = []
+    while True:
+        line = input()
+        if line == '#end':
+            break
+        messages.append(line)
+    message = '\n'.join(messages)
     if sys.argv[1] == "send_group":
         send_group(fbc.client, message)
     elif sys.argv[1] == "send_friends":
